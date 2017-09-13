@@ -53,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements MovieApiDB.MovieL
 
         ButterKnife.bind(this);
 
+
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
