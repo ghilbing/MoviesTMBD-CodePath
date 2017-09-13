@@ -58,7 +58,11 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
     public void onBindViewHolder(MovieViewHolder holder, int position) {
 
         Movie movie = mMovieList.get(position);
-        Picasso.with(mContext).load(movie.getPosterUrl()).placeholder(R.color.colorAccent).into(holder.poster);
+        Picasso.with(mContext)
+                .load(movie.getPosterUrl())
+                .placeholder(R.drawable.ic_local_movies_gray)
+                .error(R.drawable.ic_local_movies_gray)
+                .into(holder.poster);
 
         holder.title.setText(movie.getTitle());
 

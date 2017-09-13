@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements MovieApiDB.MovieL
 
 
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setItemViewCacheSize(20);
