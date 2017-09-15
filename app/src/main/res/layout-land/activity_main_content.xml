@@ -9,8 +9,16 @@
     tools:showIn="@layout/activity_main"
     tools:context=".activities.MainActivity">
 
-    <android.support.v7.widget.RecyclerView
+    <fragment android:id="@+id/fragment_main_container"
+        android:name="com.example.codepath.moviestmbd.fragments.MainFragment"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout="@layout/fragment_main"/>
+
+    <!--<android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"/>-->
 </RelativeLayout>

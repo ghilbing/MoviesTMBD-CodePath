@@ -9,34 +9,21 @@
     tools:showIn="@layout/activity_main"
     tools:context=".activities.MainActivity">
 
-    <android.support.v7.widget.RecyclerView
+    <fragment android:id="@+id/fragment_main_container"
+        android:name="com.example.codepath.moviestmbd.fragments.MainFragment"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout="@layout/fragment_main"/>
+
+
+
+    <!--<android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"/>-->
 </RelativeLayout>
 
-    <!--<Button
-        android:id="@+id/btonTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onFragmentMovie"
-        android:text="Title" />
 
-    <Button
-        android:id="@+id/btnPoster"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/frag_layout"
-        android:onClick="onFragmentPoster"
-        android:text="Poster" />
-
-    <FrameLayout
-        android:id="@+id/frag_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true">
-
-    </FrameLayout>-->
 

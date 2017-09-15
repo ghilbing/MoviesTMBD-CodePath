@@ -13,6 +13,8 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+
+
         <TextView
             android:id="@+id/movie_description"
             android:layout_width="match_parent"
@@ -49,6 +51,12 @@
             android:layout_alignParentBottom="true"
             android:layout_toEndOf="@+id/movie_poster" />
 
+        <FrameLayout
+            android:id="@+id/fragment_detail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </FrameLayout>
 
     </RelativeLayout>
 </android.support.v4.widget.NestedScrollView>

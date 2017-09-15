@@ -20,54 +20,64 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
+import static java.util.Collections.addAll;
+
 /**
  * Created by gretel on 9/13/17.
  */
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewHolder> {
 
-    public List<Movie> mMovieList;
-    public LayoutInflater mInflater;
-    public Context mContext;
+    public ArrayList<Movie> mMovieList = new ArrayList<>();
 
-    public MoviesAdapter(Context context){
-        this.mContext = context;
-        this.mInflater = LayoutInflater.from(context);
+
+
+
+    int maxPages = -1;
+    int pageSize = 20;
+
+
+
+    public void setData(List<Movie> data) {
+        this.mMovieList.clear();
+        this.mMovieList.addAll(data);
+        this.notifyDataSetChanged();
+
     }
 
+    public void appendData(List<Movie> movies) {
+        this.mMovieList.addAll(movies);
+        this.notifyDataSetChanged();
+    }
+
+    public void appendData(Movie movie) {
+        this.mMovieList.add(movie);
+        this.notifyItemChanged(this.mMovieList.size() - 1);
+        if (this.mMovieList.size() == 1) {
+
+        }
+    }
 
 
     @Override
     public MovieViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.item_movie, parent, false);
-        final MovieViewHolder holder = new MovieViewHolder(view);
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int position = holder.getAdapterPosition();
-                Intent intent = new Intent(mContext, DetailActivity.class);
-                intent.putExtra(DetailActivity.EXTRA_MOVIE, mMovieList.get(position));
-                mContext.startActivity(intent);
-            }
-        });
 
-        return holder;
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View view = inflater.inflate(R.layout.item_movie, parent, false);
+        return new MovieViewHolder(view);
+
     }
 
     @Override
     public void onBindViewHolder(MovieViewHolder holder, int position) {
 
         Movie movie = mMovieList.get(position);
-        Picasso.with(mContext)
+        holder.title.setText(movie.getTitle());
+        Picasso.with(holder.poster.getContext())
                 .load(movie.getPosterUrl())
                 .placeholder(R.drawable.ic_local_movies_gray)
                 .error(R.drawable.ic_local_movies_gray)
                 .into(holder.poster);
-
-        holder.title.setText(movie.getTitle());
-
-
-
     }
 
     @Override
@@ -88,11 +98,9 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
         }
     }
 
-    public void setMovieList(List<Movie> movieList) {
-        this.mMovieList = new ArrayList<>();
-        this.mMovieList.addAll(movieList);
-        notifyDataSetChanged();
-    }
+
+
+
 }
 
 
