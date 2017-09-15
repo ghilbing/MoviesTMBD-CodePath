@@ -6,8 +6,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.codepath.moviestmbd.R;
 import com.example.codepath.moviestmbd.activities.DetailActivity;
@@ -29,8 +31,6 @@ import static java.util.Collections.addAll;
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewHolder> {
 
     public ArrayList<Movie> mMovieList = new ArrayList<>();
-
-
 
 
     int maxPages = -1;
@@ -71,6 +71,8 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
     @Override
     public void onBindViewHolder(MovieViewHolder holder, int position) {
 
+
+
         Movie movie = mMovieList.get(position);
         holder.title.setText(movie.getTitle());
         Picasso.with(holder.poster.getContext())
@@ -85,7 +87,9 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
         return (mMovieList == null) ? 0 : mMovieList.size();
     }
 
-    class MovieViewHolder extends RecyclerView.ViewHolder{
+    class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        Context context;
+
         @Bind(R.id.movie_poster_row)
         ImageView poster;
         @Bind(R.id.movie_title_row)
@@ -95,6 +99,13 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
             super(itemView);
             ButterKnife.bind(this, itemView);
 
+        }
+
+        @Override
+        public void onClick(View view) {
+            int position = getLayoutPosition();
+            Movie movie = mMovieList.get(position);
+            Toast.makeText(context, title.getText(), Toast.LENGTH_SHORT).show();
         }
     }
 

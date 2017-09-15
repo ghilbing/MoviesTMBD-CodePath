@@ -150,7 +150,6 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnMo
     public void onMovieSelected(Movie selection, boolean onClick, View view) {
 
 
-
        mSelectedMovie = selection;
 
         if(isTwoPane) {
