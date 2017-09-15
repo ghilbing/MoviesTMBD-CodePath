@@ -3,6 +3,7 @@ package com.example.codepath.moviestmbd.activities;
 import android.content.Intent;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -40,28 +41,23 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnMo
 
     public static final String EXTRA_MOVIE = "movie";
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
-    private static final String TAG_DETAIL = "fragment_details";
+    private static final String TAG_DETAIL = "fragment_detail";
 
-    Fragment mainFragment;
-    Fragment detailFragment;
 
     MovieApiDB movieApiDB;
 
-    //MoviesAdapter mAdapter;
 
     Movie mSelectedMovie;
 
     //Determines if this is a one or two pane layout
     boolean isTwoPane = false;
 
-    //List<Movie> movies;
 
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
 
-    /*@Bind(R.id.recyclerView)
-    RecyclerView mRecyclerView;*/
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,25 +76,6 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnMo
 
         }
 
-
-       /* mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setItemViewCacheSize(20);
-        mRecyclerView.setDrawingCacheEnabled(true);
-        mRecyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
-        mAdapter = new MoviesAdapter(this);
-        mRecyclerView.setAdapter(mAdapter);*/
-
-
-
-
-        mainFragment = new MainFragment();
-        detailFragment = new DetailFragment();
-
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.fragment_main_container, mainFragment);
-        ft.addToBackStack(null);
-        ft.commit();
 
         movieApiDB = MovieApiDB.getInstance(getString(R.string.api_key));
 
@@ -172,6 +149,8 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnMo
     @Override
     public void onMovieSelected(Movie selection, boolean onClick, View view) {
 
+
+
        mSelectedMovie = selection;
 
         if(isTwoPane) {
@@ -197,11 +176,11 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnMo
 
 
         }else if (onClick) {
-            onMovieClicked(selection, onClick, view);
-           // Intent intent = new Intent(this, DetailActivity.class);
-           // intent.putExtra(DetailActivity.EXTRA_MOVIE, selection);
-           // this.startActivity(intent);
-           // Log.d(LOG_TAG, "Starting activity");
+            onMovieClicked(selection, true, view);
+            /*Intent intent = new Intent(this, DetailActivity.class);
+            intent.putExtra(DetailActivity.EXTRA_MOVIE, selection);
+            this.startActivity(intent);
+            Log.d(LOG_TAG, "Starting activity");*/
         }
     }
 

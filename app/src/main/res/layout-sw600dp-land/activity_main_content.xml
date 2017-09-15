@@ -18,7 +18,7 @@
 
 
         <fragment
-            android:id="@+id/fragment_main_container_tablet"
+            android:id="@+id/fragment_main_container"
             android:name="com.example.codepath.moviestmbd.fragments.MainFragment"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"

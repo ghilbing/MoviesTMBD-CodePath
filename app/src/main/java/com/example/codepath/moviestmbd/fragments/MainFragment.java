@@ -33,7 +33,7 @@ import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
  * Created by gretel on 9/12/17.
  */
 
-public class MainFragment extends Fragment implements MovieApiDB.MovieListener, MovieApiDB.MovieListListener {
+public class MainFragment extends Fragment implements  MovieApiDB.MovieListener, MovieApiDB.MovieListListener {
 
     static final String LOG_TAG = MainFragment.class.getSimpleName();
     static final String EXTRA_MOVIES = "movies";
@@ -45,6 +45,8 @@ public class MainFragment extends Fragment implements MovieApiDB.MovieListener, 
     MoviesAdapter mAdapter;
 
     OnMovieListener mListener;
+
+
     public interface OnMovieListener {
         public void onMovieSelected(Movie selection,boolean onClick, View view);
     }
@@ -58,6 +60,7 @@ public class MainFragment extends Fragment implements MovieApiDB.MovieListener, 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_main, null);
 
         ButterKnife.bind(this,view);
